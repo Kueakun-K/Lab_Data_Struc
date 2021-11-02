@@ -59,8 +59,8 @@ class BST:
             else:
                 print("Not exist")
                 return
-        
-                
+
+ 
 T = BST()
 inp = [int(i) for i in input('Enter Input : ').split()]
 for i in range(1, len(inp)):
