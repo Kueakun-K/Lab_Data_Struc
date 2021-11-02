@@ -80,13 +80,25 @@ class BST:
             self.postorder(root.right)
             print(root.data,end=' ')
     
-    def breadth(self,root):
-        if(root.data is self.root.data):
-                print(root.data,end=' ')
+    def postorder1(self,root):
         if root is not None:
+            self.postorder(root.left)
+            self.postorder(root.right)
+            print(root.data,end=' ')
+    
+    def breadth(self,root):
+        q = []
+        while root is not None:
+            self.postorder1(q)
+            print(root.data,end=" ")
+            if root.left is not None:
+                q.append(root.left)
+            if root.right is not None:
+                q.append(root.right)
+            if q is not []:
+                root = q.pop(0)   
+        return
             
-
-
     def printTree(self, node, level = 0):
         if node != None:
             self.printTree(node.right, level + 1)

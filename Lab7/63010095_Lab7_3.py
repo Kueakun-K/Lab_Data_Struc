@@ -41,23 +41,24 @@ def printTree90(node, level = 0):
         printTree90(node.left, level + 1)
 
 def father(r,data):
-    if r is None:
-       return False
-    if r.data == data:
-        return True
-    if father(r.left,data) or father(r.right,data):
-        if r.data == "":
-            print("None")
-        else:
-            print(r.data)
+    if data == int(r.data):
+        return f"None Because {data} is Root"
+    if r.left is not None:
+        if data == int(r.left.data):
+            return r.data
+        if data < int(r.data):
+            return father(r.left,data)
+    if r.right is not None:
+        if data == int(r.right.data):
+            return r.data 
+        if data > int(r.data): 
+            return father(r.right,data)
     else:
         return "Not Found Data"
-    
 
 tree = BinarySearchTree()
 data = input("Enter Input : ").split("/")
 for e in data[0].split():
     tree.create(e)
 printTree90(tree.root)
-
-print(father(tree.root,data[1]))
+print(father(tree.root,int(data[1])))
