@@ -4,7 +4,6 @@ class Node:
         self.left = None
         self.right = None
     
-    
     def __str__(self):
         return str(self.data)
 
@@ -22,13 +21,13 @@ class BST:
                 if data > p.data:  
                     if p.right is None:
                         p.right = newData
-                        break #done for insert(while TRUE)
-                    p = p.right  #back to check again
+                        break 
+                    p = p.right 
                 else:
                     if p.left is None:
                         p.left = newData
-                        break #done for insert(while TRUE)
-                    p = p.left #back to check again
+                        break
+                    p = p.left 
         return self.root
                
     def Searchnum(self):
