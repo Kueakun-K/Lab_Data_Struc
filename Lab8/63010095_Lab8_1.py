@@ -26,7 +26,6 @@ class BST:
                         print("*")
                         break 
                     p = p.right 
-
                 else:
                     print("L",end="")
                     if p.left is None:
@@ -34,17 +33,9 @@ class BST:
                         print("*")
                         break 
                     p = p.left 
-                    
         return self.root
-    
-    def printTree(self, node, level = 0):
-        if node != None:
-            self.printTree(node.right, level + 1)
-            print('     ' * level, node)
-            self.printTree(node.left, level + 1)
 
 T = BST()
-inp = [int(i) for i in input('Enter Input : ').split()]
-for i in inp:
+input = [int(i) for i in input('Enter Input : ').split()]
+for i in input:
     root = T.insert(i)
-T.printTree(root)
