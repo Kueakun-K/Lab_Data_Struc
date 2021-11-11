@@ -3,7 +3,7 @@ class Node:
     def __init__(self, data,index):
         self.data = data
         self.index = index
-        self.left = None1
+        self.left = None
         self.right = None
     
     def __str__(self):
