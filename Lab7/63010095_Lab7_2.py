@@ -30,44 +30,25 @@ class BST:
                     p = p.left 
         return self.root
                
-    def Searchnum(self):
-        t = self.root
-        while(t.left is not None):
-            t = t.left
-        return t.data
-    def Searchmax(self):
-        t = self.root
-        while(t.right is not None):
-            t = t.right
-        return t.data
+    def below(self,root,check):
+        if root != None:
+            self.below(root.left,check)
+            if root.data<check:
+                print(root.data,end=" ")
+            self.below(root.right,check)
 
-    def below(self,data):
-        t = self.root.left
-        num = []
-        while(t is not None):
-            if(data> int(t.data) ):
-                num.insert(0,t.data)
-                if(t.right is not None and data > int(t.right.data)):
-                    num.append(t.right.data)
-            t = t.left
-        t = self.root
-        if(data > int(t.data)):
-            num.append(t.data)
-            if t.right:
-                t = t.right
-            while(t is not None):
-                if(data > int(t.data)):
-                    if(t.left is not None):
-                        num.append(t.left.data)
-                    num.append(t.data)
-                t = t.right
-        return num
+    def checkHaveBelow(self,root,check):
+        if root.left != None:
+            return self.checkHaveBelow(root.left,check)
+        else:
+            return root.data < check
 
     def printTree(self, node, level = 0):
         if node != None:
             self.printTree(node.right, level + 1)
             print('     ' * level, node)
             self.printTree(node.left, level + 1)
+    
 
 T = BST()
 inp,num = input("Enter Input : ").split('|')
@@ -78,10 +59,7 @@ for i in range(len(inp)):
 T.printTree(root)
 print("--------------------------------------------------")
 print(f"Below {num} : ",end="")
-li = T.below(int(num))
-if li != []:
-    for j in li:
-        print(j,end=" ")
-
-else:
+if not T.checkHaveBelow(root,int(num)):
     print("Not have")
+T.below(root,int(num))
+
