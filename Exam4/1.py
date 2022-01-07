@@ -20,8 +20,6 @@ def list_to_bst(list_nums):
 
     return node
 
-
-
 def preOrder(node): 
 
     if not node: 
@@ -51,7 +49,6 @@ def printBST(node,level = 0):
 list_nums = sorted([int(item) for item in input("Enter list : ").split()])
 
 result = list_to_bst(list_nums)
-
 
 
 
